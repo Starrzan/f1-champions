@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html lang="en" ng-app="f1Champions" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="f1Champions" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="f1Champions" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en" ng-app="f1Champions" ng-controller="appController" class="no-js"> <!--<![endif]-->
+	<head>
+		<base href="/" />
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<title>F1 World Champions By S.Tarr</title>
+		<meta name="description" content="" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="icon" type="image/x-icon" href="img/favicon.ico">
+		<link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css" />
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" />
+		<link rel="stylesheet" href="//fonts.googleapis.com/icon?family=Material+Icons" />
+		<link rel="stylesheet" href="css/app.css" />
+	</head>
+	<body ng-cloak>
+		<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+		<md-toolbar>
+			<div class="md-toolbar-tools">
+				<md-button href="/" aria-label="Go Back">
+					Back
+				</md-button>
+
+				<h1 flex md-truncate>F1 World Champions</h1>
+
+				<md-button class="md-fab md-mini" aria-label="About" ng-click="showAbout()">
+					<i class="material-icons">help</i>
+				</md-button>
+			</div>
+		</md-toolbar>
+
+		<md-content>
+			<md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+
+				<div layout="row">
+
+					<div layout-align="center" flex layout-margin>
+
+						<ui-view></ui-view>
+
+					</div>
+
+				</div>
+
+			</md-card>
+		</md-content>
+
+		<script src="bower_components/angular/angular.js"></script>
+		<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+		<script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+		<script src="bower_components/angular-animate/angular-animate.min.js"></script>
+		<script src="bower_components/angular-aria/angular-aria.min.js"></script>
+		<script src="bower_components/angular-messages/angular-messages.min.js"></script>
+		<script src="bower_components/angular-route/angular-route.js"></script>
+		<script src="bower_components/angular-material/angular-material.min.js"></script>
+		<script src="js/app.js"></script>
+		<script src="partials/service.seasons.js"></script>
+		<script src="partials/controller.seasons.js"></script>
+		<script src="partials/controller.season.js"></script>
+	</body>
+</html>

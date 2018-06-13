@@ -1,0 +1,23 @@
+{
+	"name": "f1-champions",
+	"description": "A test project for Mobiquity",
+	"version": "0.1.0",
+	"homepage": "https://github.com/starrzan/f1-champions",
+	"license": "MIT",
+	"private": true,
+	"dependencies": {
+		"angular": "^1.7.0",
+		"angular-route": "^1.7.0",
+		"angular-loader": "^1.7.0",
+		"angular-mocks": "^1.7.0",
+		"angular-ui-router": "^1.0.18",
+		"angular-aria": "^1.1.9",
+		"angular-animate": "^1.1.9",
+		"angular-messages": "^1.1.9",
+		"angular-material": "^1.1.9",
+		"angular-sanitize": "^1.7.2"
+	},
+	"resolutions": {
+		"angular": ">= 1.2.0"
+	}
+}

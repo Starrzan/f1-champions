@@ -1,0 +1,42 @@
+<md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+
+	<div layout="row" layout-xs="column">
+
+		<div flex layout-margin>
+
+			<h2><span class="align-right">{{ season }}</span> Season</h2>
+
+		</div>
+
+	</div>
+
+</md-card>
+
+<md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+
+	<div layout="row">
+
+		<div layout="column" flex layout-margin>
+
+			<table>
+				<thead>
+					<tr>
+						<th>Round</th>
+						<th>Winner</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="round in rounds" ng-class="highlight">
+						<td>{{ round.round }}</td>
+						<td>{{ round.winner }}</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<md-progress-linear md-mode="indeterminate" class="loader" ng-show="loading"></md-progress-linear>
+
+		</div>
+
+	</div>
+
+</md-card>
