@@ -14,6 +14,12 @@ h1 {
   margin: 0 0 -5px 0;
   padding: 0; }
 
+.align-left {
+  text-align: left; }
+
+.align-right {
+  text-align: right; }
+
 md-content {
   margin: -10px -7px 0; }
 
@@ -27,14 +33,18 @@ md-toolbar.md-default-theme:not(.md-menu-toolbar),
 md-toolbar:not(.md-menu-toolbar) {
   background-color: #FF5252; }
 
+.md-button i {
+  font-size: 18px;
+  vertical-align: middle; }
+
 .md-fab {
   background-color: #212121 !important;
   line-height: 30px !important;
-  width: 35px !important;
-  height: 35px !important; }
+  width: 32px !important;
+  height: 32px !important;
+  min-height: 32px !important; }
   .md-fab i {
-    font-size: 22px;
-    vertical-align: middle; }
+    font-size: 20px; }
 
 md-dialog-content a {
   text-decoration: none;

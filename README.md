@@ -1,6 +1,6 @@
-# `f1-champions` An interactive listing of F1 World Champions
+# `f1-champions` An interactive listing of Formula1 World Champions
 
-This project is an AngularJS application that lists the Formula 1 World Champions
+This project is an AngularJS application that lists the Formula1 World Champions
 for each year (currently from 2005 to 2015) and also displays the winners
 of each round during that specific year.
 

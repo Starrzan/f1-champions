@@ -9,6 +9,8 @@ $primary-text-color:   #212121;
 $secondary-text-color: #757575;
 $divider-color:        #BDBDBD;
 
+// General
+
 html {
 	color: $primary-text-color;
 }
@@ -28,6 +30,16 @@ h1 {
 	padding: 0;
 }
 
+.align-left {
+	text-align: left;
+}
+
+.align-right {
+	text-align: right;
+}
+
+// Material Components
+
 md-content {
 	margin: -10px -7px 0;
 }
@@ -45,19 +57,28 @@ md-toolbar:not(.md-menu-toolbar) {
 	background-color: $accent-color;
 }
 
+.md-button {
+
+	i {
+		font-size: 18px;
+		vertical-align: middle;
+	}
+
+}
+
 .md-fab {
 	background-color: $primary-text-color !important;
 	line-height: 30px !important;
-	width: 35px !important;
-	height: 35px !important;
+	width: 32px !important;
+	height: 32px !important;
+	min-height: 32px !important;
 
 	&:hover {
 
 	}
 
 	i {
-		font-size: 22px;
-		vertical-align: middle;
+		font-size: 20px;
 	}
 
 }
@@ -71,6 +92,8 @@ md-dialog-content {
 	}
 
 }
+
+// Table
 
 table {
 	padding: 5px 0;

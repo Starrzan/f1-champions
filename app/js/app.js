@@ -27,21 +27,20 @@ angular.module('f1Champions', [
 	})
 	;
 
-	// catch all routes
+	// Catch all routes
 	$urlRouterProvider.otherwise('/');
 
 })
 
-	.controller('appController', function ($scope, $mdToast, $mdDialog, $sanitize) {
-	let last = {
-		bottom: false,
-		top: true,
-		left: false,
-		right: true
-	};
+	.controller('appController', function ($scope, $rootScope, $mdToast, $mdDialog, $sanitize) {
 
-	const appVersion = `0.1.0`;
+	// Variables
+	const appVersion = `0.1.1`;
 	const author = `Coded by <a href="http://chronicles.co.za" target="_blank">Starrzan</a>`
+
+	// Global variable that get populate with race data on request and remains stored in storage for quicker access and less http requests
+	$rootScope.state;
+	$rootScope.seasons = [];
 
 	$scope.showAbout = function() {
 		$mdDialog.show(

@@ -23,15 +23,20 @@
 
 		<md-toolbar>
 			<div class="md-toolbar-tools">
-				<md-button href="/" aria-label="Go Back">
-					Back
-				</md-button>
+
+				<div flex class="align-left">
+					<md-button href="/" aria-label="Go Back" ng-show="state !== 'seasons'">
+						<i class="material-icons">arrow_back</i> Back
+					</md-button>
+				</div>
 
 				<h1 flex md-truncate>F1 World Champions</h1>
 
-				<md-button class="md-fab md-mini" aria-label="About" ng-click="showAbout()">
-					<i class="material-icons">help</i>
-				</md-button>
+				<div flex class="align-right">
+					<md-button class="md-fab md-mini" aria-label="About" ng-click="showAbout()">
+						<i class="material-icons">help</i>
+					</md-button>
+				</div>
 			</div>
 		</md-toolbar>
 

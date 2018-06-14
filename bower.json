@@ -1,7 +1,7 @@
 {
 	"name": "f1-champions",
 	"description": "A test project for Mobiquity",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"homepage": "https://github.com/starrzan/f1-champions",
 	"license": "MIT",
 	"private": true,

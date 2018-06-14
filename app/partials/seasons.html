@@ -6,7 +6,7 @@
 
 			<h2>{{ seasonStart }} - {{ seasonEnd }}</h2>
 
-			<p>An interactive listing of all of the Formula 1 races winners from {{ seasonStart }} to {{ seasonEnd }}</p>
+			<p>An interactive listing of all of the Formula1 races winners from {{ seasonStart }} to {{ seasonEnd }}</p>
 
 		</div>
 
@@ -28,9 +28,9 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-click="viewSeason(season.season)" ng-repeat="season in seasons">
+					<tr ng-click="viewSeason(season.season)" ng-repeat="season in seasons | filter:{season: ''}">
 						<td>{{ season.season }}</td>
-						<td>{{ season.winner }}</td>
+						<td>{{ season.champion }}</td>
 					</tr>
 				</tbody>
 			</table>

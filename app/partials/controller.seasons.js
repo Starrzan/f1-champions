@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('f1Champions')
-	.controller('seasonsController', function($scope, $location, SeasonsService) {
+	.controller('seasonsController', function($scope, $rootScope, $state, $location, SeasonsService) {
 
 	// ERGAST API VARIABLES
 	const ergastApi = '//ergast.com/api'
@@ -11,28 +11,34 @@ angular.module('f1Champions')
 
 	// VARIABLES
 	$scope.loading = true;
-	$scope.seasons = [];
+	$scope.$state = $state;
+	$rootScope.state = $state.current.name;
 
 	// ITERATE THROUGH SEASONS FROM START AND END CONSTRAINTS AND GET SEASON WINNERS
 	for (let season = $scope.seasonStart; season <= $scope.seasonEnd; season++) {
-		$scope.seasons.push({'season': season});
 
-		let apiQuerySeasons = `${ergastApi}/${series}/${season}/driverStandings.json`;
+		//if ($rootScope.seasons.length !== 0) {
+			console.log($rootScope.seasons.length );
+			$rootScope.seasons[season] = {'season': season, 'champion': '', 'rounds': []};
 
-		SeasonsService.getData(apiQuerySeasons).then(function (response) {
+			let apiQuerySeasons = `${ergastApi}/${series}/${season}/driverStandings.json`;
 
-			let winner = response.data.MRData.StandingsTable.StandingsLists[0].DriverStandings[0].Driver;
-			$scope.seasons[season - $scope.seasonStart].winner = `${winner.givenName} ${winner.familyName}`;
+			SeasonsService.getData(apiQuerySeasons).then(function (response) {
 
-			// HIDE LOADING ELEMENT ON LAST ITEM
-			if (season == $scope.seasonEnd) {
+				let champion = response.data.MRData.StandingsTable.StandingsLists[0].DriverStandings[0].Driver;
+				$rootScope.seasons[season].champion = `${champion.givenName} ${champion.familyName}`;
+
+				// HIDE LOADING ELEMENT ON LAST ITEM
+				if (season == $scope.seasonEnd) {
+					$scope.loading = false;
+				}
+
+			}, function (error) {
+				console.log(error);
 				$scope.loading = false;
-			}
+			});
+		//}
 
-		}, function (error) {
-			console.log(error);
-			$scope.loading = false;
-		});
 	}
 
 	// ITERATE THROUGH ALL SEASONS AND GET SEASON WINNERS

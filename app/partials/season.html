@@ -17,7 +17,7 @@
 	<div layout="row">
 
 		<div layout="column" flex layout-margin>
-
+			{{ seasons[season].champion }}
 			<table>
 				<thead>
 					<tr>
@@ -26,7 +26,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="round in rounds" ng-class="highlight">
+					<tr ng-repeat="round in seasons[season].rounds | filter:{round: ''}" ng-class="{ 'highlight': round.winner == seasons[season].champion }">
 						<td>{{ round.round }}</td>
 						<td>{{ round.winner }}</td>
 					</tr>

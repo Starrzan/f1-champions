@@ -11,9 +11,9 @@ gulp.task('build', [], function() {
 
 // WATCH
 gulp.task('watch', ['default'], function() {
-	gulp.watch('app/css/**/*.scss', ['styles']);
-	gulp.watch('app/js/**/*.js', ['scripts']);
-	gulp.watch('app/img/**/*.{jpg,gif,png,svg}', ['images']);
+	gulp.watch('app/css/*.scss', ['build']);
+	gulp.watch('app/js/*.js', ['scripts']);
+	gulp.watch('app/img/*.{jpg,gif,png,svg}', ['images']);
 });
 
 gulp.task('default', ['run']);
