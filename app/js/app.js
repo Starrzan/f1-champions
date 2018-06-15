@@ -54,7 +54,7 @@ angular.module('f1Champions', [
 	} else {
 		$rootScope.f1Champions = {};
 		$rootScope.f1Champions.appTitle = `F1 World Champions`;
-		$rootScope.f1Champions.appVersion = `Version: 0.1.3`;
+		$rootScope.f1Champions.appVersion = `Version: 0.1.4`;
 		$rootScope.f1Champions.author = `Coded by <a href="http://chronicles.co.za" target="_blank">Starrzan</a>`;
 
 		// Ergast API constants
@@ -101,11 +101,13 @@ angular.module('f1Champions', [
 	}
 
 	// About dialog controller
-	function dialogController($scope, $rootScope, $window, $mdDialog) {
+	function dialogController($scope, $rootScope, $window, $location, $mdDialog) {
 
 		// Remove the global listing storage item and reload state
 		$scope.resetData = function() {
 			$window.localStorage.removeItem('f1Champions');
+			$mdDialog.cancel();
+			$location.path('/');
 			$window.location.reload();
 		}
 

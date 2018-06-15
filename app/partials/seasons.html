@@ -32,7 +32,9 @@
 				<tbody>
 					<tr ng-click="viewSeason(season.season)" ng-repeat="season in f1Champions.seasons">
 						<td>{{ season.season }}</td>
-						<td>{{ season.champion }}</td>
+						<td>
+							<span class="img champion" style="background-image: url({{ season.champion.image }})">{{ season.champion.name }}</span>
+						</td>
 					</tr>
 				</tbody>
 			</table>

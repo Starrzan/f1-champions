@@ -80,7 +80,7 @@ p {
 	width: auto;
 
 	&.top {
-		margin: 0 10px -13px !important
+		margin: 8px 10px -13px !important
 	}
 
 	&.bottom {
@@ -117,6 +117,12 @@ md-toolbar {
 		max-width: 1024px;
 		height: 50px;
 
+		.logo {
+			max-width: 100%;
+			height: 35px;
+			vertical-align: middle;
+		}
+
 		.text-left {
 
 			.md-button {
@@ -138,7 +144,8 @@ md-toolbar {
 
 md-content {
 	margin: 0 auto;
-	padding: 51px 0 0 0;
+	padding: 75px 0 0 0;
+	/*padding: 51px 0 0 0;*/
 	max-width: 1024px;
 }
 
@@ -236,13 +243,9 @@ table {
 				color: $primary-color-light;
 				text-transform: uppercase;
 
-				@include breakpoint(mobileonly) {
-					width: 80%;
-
-					&:first-child {
-						width: 30%;
-					}
-				}
+				/*&:last-child {
+					text-align: right;
+				}*/
 			}
 		}
 
@@ -267,16 +270,18 @@ table {
 				cursor: pointer;
 			}
 
-			/*&.highlight {
-				background-color: $accent-color;
-			}*/
-
 			&.highlight {
 
 				td {
 
 					i {
 						color: $accent-color;
+
+						@include breakpoint(mobileonly) {
+							font-size: 12px;
+							position: absolute;
+							right: 3px;
+						}
 					}
 
 				}
@@ -284,7 +289,58 @@ table {
 			}
 
 			td {
+				position: relative;
 				padding: 5px 10px;
+				height: 50px;
+
+				/*&:first-child {
+					font-weight: 700;
+				}*/
+
+				/*&:last-child {
+					text-align: right;
+				}*/
+
+				.img {
+					display: inline-block;
+					background-position: 0 0;
+					background-repeat: no-repeat;
+					height: 50px;
+					line-height: 50px;
+
+					@include breakpoint(mobileonly) {
+						line-height: inherit;
+					}
+
+					&.winner,
+					&.champion {
+						padding-left: 60px;
+					}
+
+					&.country {
+						background-position: 0 50%;
+						background-size: 30px;
+						padding-left: 51px;
+						line-height: 50px;
+					}
+
+					&.circuit {
+						background-position: 100%;
+						background-size: 45px;
+						width: 75%;
+
+						@include breakpoint(tablet) {
+							width: 80%;
+							background-size: autos;
+						}
+
+						@include breakpoint(mobileonly) {
+							display: none;
+						}
+					}
+
+				}
+
 			}
 		}
 

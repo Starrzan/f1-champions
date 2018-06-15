@@ -33,7 +33,7 @@ p i {
   padding: 0;
   width: auto; }
   .loader.top {
-    margin: 0 10px -13px !important; }
+    margin: 8px 10px -13px !important; }
   .loader.bottom {
     margin: -13px 10px 8px !important; }
 
@@ -59,6 +59,10 @@ md-toolbar {
     margin: 0 auto;
     max-width: 1024px;
     height: 50px; }
+    md-toolbar .md-toolbar-tools .logo {
+      max-width: 100%;
+      height: 35px;
+      vertical-align: middle; }
     md-toolbar .md-toolbar-tools .text-left .md-button {
       margin-left: 0; }
     md-toolbar .md-toolbar-tools .text-right .md-button {
@@ -66,7 +70,8 @@ md-toolbar {
 
 md-content {
   margin: 0 auto;
-  padding: 51px 0 0 0;
+  padding: 75px 0 0 0;
+  /*padding: 51px 0 0 0;*/
   max-width: 1024px; }
 
 .md-button {
@@ -117,17 +122,12 @@ table {
       height: 31px;
       text-align: left;
       color: #F5F5F5;
-      text-transform: uppercase; }
-      @media (max-width: 37.5em) {
-        table thead tr th {
-          width: 80%; }
-          table thead tr th:first-child {
-            width: 30%; } }
+      text-transform: uppercase;
+      /*&:last-child {
+					text-align: right;
+				}*/ }
   table tbody tr {
-    background-color: #F5F5F5;
-    /*&.highlight {
-				background-color: $accent-color;
-			}*/ }
+    background-color: #F5F5F5; }
     table tbody tr:not([ng-click]):hover td {
       border-bottom: 1px solid #9E9E9E;
       padding: 5px 10px 4px 10px; }
@@ -136,5 +136,45 @@ table {
       cursor: pointer; }
     table tbody tr.highlight td i {
       color: #f44336; }
+      @media (max-width: 37.5em) {
+        table tbody tr.highlight td i {
+          font-size: 12px;
+          position: absolute;
+          right: 3px; } }
     table tbody tr td {
-      padding: 5px 10px; }
+      position: relative;
+      padding: 5px 10px;
+      height: 50px;
+      /*&:first-child {
+					font-weight: 700;
+				}*/
+      /*&:last-child {
+					text-align: right;
+				}*/ }
+      table tbody tr td .img {
+        display: inline-block;
+        background-position: 0 0;
+        background-repeat: no-repeat;
+        height: 50px;
+        line-height: 50px; }
+        @media (max-width: 37.5em) {
+          table tbody tr td .img {
+            line-height: inherit; } }
+        table tbody tr td .img.winner, table tbody tr td .img.champion {
+          padding-left: 60px; }
+        table tbody tr td .img.country {
+          background-position: 0 50%;
+          background-size: 30px;
+          padding-left: 51px;
+          line-height: 50px; }
+        table tbody tr td .img.circuit {
+          background-position: 100%;
+          background-size: 45px;
+          width: 75%; }
+          @media (min-width: 50em) {
+            table tbody tr td .img.circuit {
+              width: 80%;
+              background-size: autos; } }
+          @media (max-width: 37.5em) {
+            table tbody tr td .img.circuit {
+              display: none; } }

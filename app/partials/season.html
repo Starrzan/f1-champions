@@ -30,9 +30,14 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="round in f1Champions.seasons[season].rounds" ng-class="{ 'highlight': round.winner == f1Champions.seasons[season].champion }">
-						<td>{{ round.round }}</td>
-						<td><i ng-if="round.winner == f1Champions.seasons[season].champion" class="material-icons align-right">flag</i> {{ round.winner }}</td>
+					<tr ng-repeat="round in f1Champions.seasons[season].rounds" ng-class="{ 'highlight': round.winner.name == f1Champions.seasons[season].champion.name }">
+						<td>
+							<span class="img country" style="background-image: url({{ round.country }})">{{ round.round }}. </span>
+							<span class="img circuit" style="background-image: url({{ round.circuit }})">{{ round.name }}</span></td>
+						<td>
+							<i ng-if="round.winner.name == f1Champions.seasons[season].champion.name" class="material-icons align-right">flag</i>
+							<span class="img winner" style="background-image: url({{ round.winner.image }})">{{ round.winner.name }}</span>
+						</td>
 					</tr>
 				</tbody>
 			</table>
