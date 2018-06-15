@@ -3,112 +3,247 @@
 $primary-color-dark:   #616161;
 $primary-color:        #9E9E9E;
 $primary-color-light:  #F5F5F5;
-$primary-color-text:   #212121;
-$accent-color:         #FF5252;
+$accent-color:         rgb(244,67,54);
 $primary-text-color:   #212121;
 $secondary-text-color: #757575;
 $divider-color:        #BDBDBD;
 
-// General
+/* Breakpoints */
+
+@mixin breakpoint($point) {
+	@if $point == desktop {
+		@media (min-width: 70em) { @content ; }
+	}
+	@else if $point == laptop {
+		@media (min-width: 64em) { @content ; }
+	}
+	@else if $point == tablet {
+		@media (min-width: 50em) { @content ; }
+	}
+	@else if $point == phablet {
+		@media (min-width: 37.5em)  { @content ; }
+	}
+	@else if $point == mobileonly {
+		@media (max-width: 37.5em)  { @content ; }
+
+	}
+}
+
+/* General */
 
 html {
-	color: $primary-text-color;
+	/*color: $primary-text-color;*/
+	overflow-y: scroll;
 }
 
 body {
-	max-width: 1024px;
 	margin: 0 auto;
+
+	&.md-dialog-is-showing {
+		overflow-y: hidden;
+	}
+}
+
+ui-view {
+	margin: 0 !important;
 }
 
 h1 {
 	text-transform: uppercase;
 	text-align: center;
+
+	@include breakpoint(mobileonly) {
+		white-space: nowrap;
+	}
+}
+
+p {
+
+	i {
+		line-height: .9 !important;
+		vertical-align: middle;
+
+		&.hightlight {
+			color: $accent-color;
+		}
+
+	}
+
+}
+
+:focus {
+	outline: 0;
 }
 
 .loader {
-	margin: 0 0 -5px 0;
 	padding: 0;
+	width: auto;
+
+	&.top {
+		margin: 0 10px -13px !important
+	}
+
+	&.bottom {
+		margin: -13px 10px 8px !important;
+	}
 }
 
-.align-left {
+.text-left {
 	text-align: left;
 }
 
-.align-right {
+.text-right {
 	text-align: right;
 }
 
-// Material Components
-
-md-content {
-	margin: -10px -7px 0;
+.align-left {
+	float: left;
 }
+
+.align-right {
+	float: right;
+}
+
+/* Material Components */
 
 md-toolbar {
+	position: fixed;
+	top: 0;
 	min-height: 50px;
+	border-bottom: 1px solid $primary-color;
+
+	.md-toolbar-tools {
+		margin: 0 auto;
+		max-width: 1024px;
+		height: 50px;
+
+		.text-left {
+
+			.md-button {
+				margin-left: 0;
+			}
+
+		}
+
+		.text-right {
+
+			.md-button {
+				margin-right: 0;
+			}
+
+		}
+
+	}
 }
 
-.md-toolbar-tools {
-	height: 50px;
-}
-
-md-toolbar.md-default-theme:not(.md-menu-toolbar),
-md-toolbar:not(.md-menu-toolbar) {
-	background-color: $accent-color;
+md-content {
+	margin: 0 auto;
+	padding: 51px 0 0 0;
+	max-width: 1024px;
 }
 
 .md-button {
+	min-width: 0;
+
+	&:not(.md-fab) {
+
+		i {
+			font-size: 18px;
+		}
+	}
 
 	i {
-		font-size: 18px;
 		vertical-align: middle;
+	}
+
+	@include breakpoint(mobileonly) {
+
+		.text {
+			display: none;
+		}
+
 	}
 
 }
 
 .md-fab {
-	background-color: $primary-text-color !important;
-	line-height: 30px !important;
-	width: 32px !important;
-	height: 32px !important;
-	min-height: 32px !important;
 
-	&:hover {
+	md-toolbar & {
+
+		&.md-mini {
+			line-height: 28px !important;
+			width: 28px !important;
+			height: 28px !important;
+			min-height: 28px !important;
+
+			i {
+				font-size: 16px;
+				color: #fff;
+			}
+		}
 
 	}
 
-	i {
-		font-size: 20px;
-	}
-
-}
-
-md-dialog-content {
-
-	a {
-		text-decoration: none;
-		font-weight: 700;
-		color: $accent-color;
+	&.md-fab-bottom-right {
+		position: fixed !important;
 	}
 
 }
 
-// Table
+md-dialog {
+
+	md-dialog-content {
+
+		.md-title {
+			text-transform: uppercase;
+		}
+
+		a {
+			text-decoration: none;
+			font-weight: 700;
+			color: $accent-color;
+		}
+
+	}
+
+	md-dialog-actions {
+		padding-right: 8px;
+		padding-left: 8px;
+
+		.md-button {
+			margin: 8px;
+		}
+	}
+
+}
+
+/* Listing Table */
 
 table {
 	padding: 5px 0;
 
-	thead{
+	thead {
 
 		tr {
-			background-color: $primary-text-color;
-		}
+			background-color: $primary-color-dark;
 
-		th {
-			padding: 5px 10px;
-			width: 50%;
-			text-align: left;
-			color: $primary-color-light;
+			th {
+				box-sizing: border-box;
+				padding: 5px 10px;
+				width: 50%;
+				height: 31px;
+				text-align: left;
+				color: $primary-color-light;
+				text-transform: uppercase;
+
+				@include breakpoint(mobileonly) {
+					width: 80%;
+
+					&:first-child {
+						width: 30%;
+					}
+				}
+			}
 		}
 
 	}
@@ -116,20 +251,41 @@ table {
 	tbody {
 
 		tr {
-			cursor: pointer;
 			background-color: $primary-color-light;
 
-			&:hover {
-				background-color: $primary-color;
+			&:not([ng-click]):hover {
+
+				td {
+					border-bottom: 1px solid $primary-color;
+					padding: 5px 10px 4px 10px;
+				}
+
 			}
+
+			&[ng-click]:hover {
+				background-color: $primary-color;
+				cursor: pointer;
+			}
+
+			/*&.highlight {
+				background-color: $accent-color;
+			}*/
 
 			&.highlight {
-				background-color: $accent-color;
-			}
-		}
 
-		td {
-			padding: 5px 10px;
+				td {
+
+					i {
+						color: $accent-color;
+					}
+
+				}
+
+			}
+
+			td {
+				padding: 5px 10px;
+			}
 		}
 
 	}

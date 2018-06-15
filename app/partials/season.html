@@ -1,10 +1,12 @@
-<md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+<md-card md-theme="{{ 'default' }}">
 
 	<div layout="row" layout-xs="column">
 
 		<div flex layout-margin>
 
-			<h2><span class="align-right">{{ season }}</span> Season</h2>
+			<h2>{{ season }}<span class="align-right">Season</span></h2>
+
+			<p class="md-caption"><i class="material-icons hightlight">flag</i> Indicates the season champion</p>
 
 		</div>
 
@@ -12,12 +14,14 @@
 
 </md-card>
 
-<md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+<md-card md-theme="{{ 'default' }}">
 
 	<div layout="row">
 
 		<div layout="column" flex layout-margin>
-			{{ seasons[season].champion }}
+
+			<md-progress-linear md-mode="indeterminate" class="loader top" ng-show="loading"></md-progress-linear>
+
 			<table>
 				<thead>
 					<tr>
@@ -26,14 +30,14 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-repeat="round in seasons[season].rounds | filter:{round: ''}" ng-class="{ 'highlight': round.winner == seasons[season].champion }">
+					<tr ng-repeat="round in f1Champions.seasons[season].rounds" ng-class="{ 'highlight': round.winner == f1Champions.seasons[season].champion }">
 						<td>{{ round.round }}</td>
-						<td>{{ round.winner }}</td>
+						<td><i ng-if="round.winner == f1Champions.seasons[season].champion" class="material-icons align-right">flag</i> {{ round.winner }}</td>
 					</tr>
 				</tbody>
 			</table>
 
-			<md-progress-linear md-mode="indeterminate" class="loader" ng-show="loading"></md-progress-linear>
+			<md-progress-linear md-mode="indeterminate" class="loader bottom" ng-show="loading"></md-progress-linear>
 
 		</div>
 

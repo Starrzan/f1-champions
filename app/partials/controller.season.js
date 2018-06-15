@@ -1,48 +1,71 @@
 'use strict';
 
 angular.module('f1Champions')
-	.controller('seasonController', function($scope, $rootScope, $state, $stateParams, SeasonsService) {
+	.controller('seasonController', function($scope, $rootScope, $state, $stateParams, $window, SeasonsService) {
 
-	// ERGAST API VARIABLES
-	const ergastApi = '//ergast.com/api'
-	const series = 'f1'
-	$scope.seasonStart = 2005;
-	$scope.seasonEnd = 2015;
-
-	// VARIABLES
-	$scope.loading = true;
-	$scope.season = $stateParams.season;
+	// Variables
+	$scope.season = $stateParams.season; // Used in ng-repeat
 	$scope.$state = $state;
 	$rootScope.state = $state.current.name;
 
-	// SEASON ROUNDS AND WINNERS
-	let apiQueryRounds = `${ergastApi}/${series}/${$scope.season}.json`;
+	// If global listing object does not contain rounds data then do API call and load data into global object
+	if (typeof $rootScope.f1Champions.seasons[$scope.season].rounds === 'undefined') {
 
-	// GET SEASON DATA
-	SeasonsService.getData(apiQueryRounds).then(function (response) {
+		$scope.loading = true;
 
-		$rootScope.seasons[$scope.season].rounds = response.data.MRData.RaceTable.Races;
+		$rootScope.f1Champions.seasons[$scope.season].rounds = {};
 
-		console.log(response);
+		let apiQueryRounds = `${$rootScope.f1Champions.ergastApi}/${$rootScope.f1Champions.series}/${$scope.season}.json`;
 
-		for (let round = 0; round < $rootScope.seasons[$scope.season].rounds.length; round++) {
+		// Get season rounds
+		SeasonsService.getData(apiQueryRounds).then(function (response) {
 
-			let apiQueryRound = `${ergastApi}/${series}/${$scope.season}/${round+1}/results.json`;
+			// Temporary variable containing all rounds to be used for loop
+			let rounds = response.data.MRData.RaceTable.Races;
 
-			SeasonsService.getData(apiQueryRound).then(function (response) {
-				let winner = response.data.MRData.RaceTable.Races[0].Results[0].Driver;
+			// Iterate through season and store round winners
+			for (let round = 0; round <= rounds.length; round++) {
 
-				$rootScope.seasons[$scope.season].rounds[round].winner = `${winner.givenName} ${winner.familyName}`;
+				// If global listing object does not contain round data then do API call and load data into global object
+				if (typeof $rootScope.f1Champions.seasons[$scope.season].rounds[round] === 'undefined') {
 
-				if ((round == $rootScope.seasons[$scope.season].rounds.length -1)) {
+					$scope.loading = true;
+
+					let apiQueryRound = `${$rootScope.f1Champions.ergastApi}/${$rootScope.f1Champions.series}/${$scope.season}/${round+1}/results.json`;
+
+					SeasonsService.getData(apiQueryRound).then(function (response) {
+
+						let winner = response.data.MRData.RaceTable.Races[0].Results[0].Driver;
+
+						$rootScope.f1Champions.seasons[$scope.season].rounds = rounds;
+						$rootScope.f1Champions.seasons[$scope.season].rounds[round].winner = `${winner.givenName} ${winner.familyName}`;
+
+						// Update global listing object in localStorage
+						$window.localStorage.setItem('f1Champions', JSON.stringify($rootScope.f1Champions));
+
+						// Hide loading element on last item
+						if ((round == rounds.length -1)) {
+							$scope.loading = false;
+						}
+
+					}, function (error) {
+						console.log(error);
+						$scope.loading = false;
+					});
+
+				} else {
 					$scope.loading = false;
 				}
-			});
 
-		}
-	}, function (error) {
-		console.log(error);
+			}
+
+		}, function (error) {
+			console.log(error);
+			$scope.loading = false;
+		});
+
+	} else {
 		$scope.loading = false;
-	});
+	}
 
 });

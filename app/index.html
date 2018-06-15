@@ -18,22 +18,22 @@
 	</head>
 	<body ng-cloak>
 		<!--[if lt IE 7]>
-<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-<![endif]-->
+		<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+		<![endif]-->
 
 		<md-toolbar>
 			<div class="md-toolbar-tools">
 
-				<div flex class="align-left">
-					<md-button href="/" aria-label="Go Back" ng-show="state !== 'seasons'">
-						<i class="material-icons">arrow_back</i> Back
+				<div flex class="text-left">
+					<md-button href="/" aria-label="Go back" ng-show="state !== 'seasons'">
+						<i class="material-icons">arrow_back</i> <span class="text">Back</span>
 					</md-button>
 				</div>
 
-				<h1 flex md-truncate>F1 World Champions</h1>
+				<h1 flex>{{ f1Champions.appTitle }}</h1>
 
-				<div flex class="align-right">
-					<md-button class="md-fab md-mini" aria-label="About" ng-click="showAbout()">
+				<div flex class="text-right">
+					<md-button class="md-fab md-mini" aria-label="About the app" ng-click="showAbout()">
 						<i class="material-icons">help</i>
 					</md-button>
 				</div>
@@ -41,7 +41,7 @@
 		</md-toolbar>
 
 		<md-content>
-			<md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+			<md-card md-theme="{{ 'default' }}">
 
 				<div layout="row">
 
@@ -55,6 +55,10 @@
 
 			</md-card>
 		</md-content>
+
+		<md-button class="md-fab md-mini md-fab-bottom-right" aria-label="Back to top" ng-click="backToTop()">
+			<i class="material-icons">keyboard_arrow_up</i>
+		</md-button>
 
 		<script src="bower_components/angular/angular.js"></script>
 		<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>

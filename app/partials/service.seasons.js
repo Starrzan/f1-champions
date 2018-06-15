@@ -3,8 +3,7 @@
 angular.module('f1Champions')
 	.factory('SeasonsService', function ($http, $q) {
 
-	// GET DATA
-
+	// Get data from API
 	return {
 		getData: function (apiQuery) {
 

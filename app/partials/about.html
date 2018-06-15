@@ -1,0 +1,21 @@
+<md-dialog aria-label="About the app">
+	<form ng-cloak>
+		<md-dialog-content class="md-dialog-content">
+			<h2 class="md-title ng-binding">{{ f1Champions.appTitle }}</h2>
+			<div class="md-dialog-content-body">
+				{{ f1Champions.appVersion }}
+				<span ng-bind-html="f1Champions.author"></span>
+			</div>
+		</md-dialog-content>
+
+		<md-dialog-actions layout="row">
+			<md-button ng-click="resetData()">
+				Reset data
+			</md-button>
+			<span flex></span>
+			<md-button ng-click="close()">
+				Close
+			</md-button>
+		</md-dialog-actions>
+	</form>
+</md-dialog>

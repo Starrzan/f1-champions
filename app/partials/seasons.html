@@ -1,12 +1,12 @@
-<md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+<md-card md-theme="{{ 'default' }}">
 
 	<div layout="row">
 
 		<div flex layout-margin>
 
-			<h2>{{ seasonStart }} - {{ seasonEnd }}</h2>
+			<h2>{{ f1Champions.seasonStart }} - {{ f1Champions.seasonEnd }}</h2>
 
-			<p>An interactive listing of all of the Formula1 races winners from {{ seasonStart }} to {{ seasonEnd }}</p>
+			<p>An interactive listing of all of the Formula1 races winners from {{ f1Champions.seasonStart }} to {{ f1Champions.seasonEnd }}.</p>
 
 		</div>
 
@@ -14,11 +14,13 @@
 
 </md-card>
 
-<md-card md-theme="{{ showDarkTheme ? 'dark-grey' : 'default' }}" md-theme-watch>
+<md-card md-theme="{{ 'default' }}">
 
 	<div layout="row">
 
 		<div layout="column" flex layout-margin>
+
+			<md-progress-linear md-mode="indeterminate" class="loader top" ng-show="loading"></md-progress-linear>
 
 			<table>
 				<thead>
@@ -28,14 +30,14 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr ng-click="viewSeason(season.season)" ng-repeat="season in seasons | filter:{season: ''}">
+					<tr ng-click="viewSeason(season.season)" ng-repeat="season in f1Champions.seasons">
 						<td>{{ season.season }}</td>
 						<td>{{ season.champion }}</td>
 					</tr>
 				</tbody>
 			</table>
 
-			<md-progress-linear md-mode="indeterminate" class="loader" ng-show="loading"></md-progress-linear>
+			<md-progress-linear md-mode="indeterminate" class="loader bottom" ng-show="loading"></md-progress-linear>
 
 		</div>
 
