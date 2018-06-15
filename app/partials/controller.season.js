@@ -80,6 +80,9 @@ angular.module('f1Champions')
 						// Get round country
 						let country = rounds[round].Circuit.Location.country;
 
+						// Fix for Korea on restcountries.eu
+						country = country == 'Korea' ? 'Korea (Republic of)' : country;
+
 						// Extract country code from country
 						console.log(country);
 						let apiQueryRestCountries = `https://restcountries.eu/rest/v2/name/${country}?fullText=true`;

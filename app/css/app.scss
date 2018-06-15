@@ -280,7 +280,7 @@ table {
 						@include breakpoint(mobileonly) {
 							font-size: 12px;
 							position: absolute;
-							right: 3px;
+							right: 5px;
 						}
 					}
 
@@ -315,6 +315,10 @@ table {
 					&.winner,
 					&.champion {
 						padding-left: 60px;
+
+						@include breakpoint(mobileonly) {
+							padding-left: 45px;
+						}
 					}
 
 					&.country {
@@ -322,6 +326,10 @@ table {
 						background-size: 30px;
 						padding-left: 51px;
 						line-height: 50px;
+
+						@include breakpoint(mobileonly) {
+							padding-left: 40px;
+						}
 					}
 
 					&.circuit {

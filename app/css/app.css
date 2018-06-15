@@ -140,7 +140,7 @@ table {
         table tbody tr.highlight td i {
           font-size: 12px;
           position: absolute;
-          right: 3px; } }
+          right: 5px; } }
     table tbody tr td {
       position: relative;
       padding: 5px 10px;
@@ -162,11 +162,17 @@ table {
             line-height: inherit; } }
         table tbody tr td .img.winner, table tbody tr td .img.champion {
           padding-left: 60px; }
+          @media (max-width: 37.5em) {
+            table tbody tr td .img.winner, table tbody tr td .img.champion {
+              padding-left: 45px; } }
         table tbody tr td .img.country {
           background-position: 0 50%;
           background-size: 30px;
           padding-left: 51px;
           line-height: 50px; }
+          @media (max-width: 37.5em) {
+            table tbody tr td .img.country {
+              padding-left: 40px; } }
         table tbody tr td .img.circuit {
           background-position: 100%;
           background-size: 45px;
