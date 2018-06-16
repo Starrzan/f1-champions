@@ -57,7 +57,7 @@ angular.module('f1Champions', [
 		// Global listing object
 		$rootScope.f1Champions = {};
 		$rootScope.f1Champions.appTitle = `F1 World Champions`;
-		$rootScope.f1Champions.appVersion = `Version: 0.2.2`;
+		$rootScope.f1Champions.appVersion = `Version: 0.2.3`;
 		$rootScope.f1Champions.author = `Coded by <a href="http://chronicles.co.za" target="_blank">Starrzan</a>`;
 
 		// Ergast API constants

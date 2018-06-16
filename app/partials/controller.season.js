@@ -35,6 +35,8 @@ angular.module('f1Champions')
 				'name': `${champion.givenName} ${champion.familyName}`
 			};
 
+			return champion;
+
 		}).then(function (response) {
 
 			// Extract driver image from Wikipedia article field
@@ -42,7 +44,7 @@ angular.module('f1Champions')
 
 			AppService.getData(apiQueryWikiDriver).then(function (response) {
 
-				$rootScope.f1Champions.seasons[season].champion.image = (AppService.getWikiArticleImageSrc(response));
+				$rootScope.f1Champions.seasons[season].champion.image = AppService.getWikiArticleImageSrc(response);
 
 				// Update global listing object in localStorage (future feature)
 				//AppService.storeObject('f1Champions', $rootScope.f1Champions);
