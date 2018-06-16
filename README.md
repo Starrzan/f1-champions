@@ -6,20 +6,24 @@ of each round during that specific year.
 
 The season and race data is sourced from the Experimental Motor Racing Developer API [http://ergast.com/mrd].
 
+The circuit and driver images are sourced from the Wikipedia API [https://en.wikipedia.org/w/api.php].
+
+The country codes and country flags are sourced from [https://restcountries.eu] and [http://www.countryflags.io].
+
 
 ## Getting Started
 
-To view the listings go to [http://f1champions.tarr.co.za]
+To view the app go to [http://f1champions.tarr.co.za]
 
-To view the source files or to create a fork simply clone the `f1-champions` repository and install the dependencies:
+To view the source files, or to create a fork, clone the `f1-champions` repository and install the dependencies:
 
 
 ### Prerequisites
 
-You need git to clone the `f1-championsd` repository. You can get git from [here][git].
+You need git to clone the `f1-championsd` repository. You can get git from [https://github.com/Starrzan/f1-champions.git].
 
 THere are a number of Node.js tools that is used to build the application. You must have Node.js
-and its package manager (npm) installed. You can get them from [here][node].
+and its package manager (npm) installed. You can get them from [https://nodejs.org].
 
 
 ### Clone `f1-champions`
@@ -31,24 +35,16 @@ git clone https://github.com/Starrzan/f1-champions.git
 cd f1-champions
 ```
 
-If you just want to start a new project without the `f1-champions` commit history then you can do:
-
-```
-git clone --depth=1 https://github.com/Starrzan/f1-champions.git <your-project-name>
-```
-
-The `depth=1` tells git to only pull down one commit worth of historical data.
-
 
 ### Install Dependencies
 
-There are two kinds of dependencies in this project: tools and Angular framework code. The tools help
-us manage the application.
+There are two kinds of dependencies in this project: tools and AngularJS framework code. The tools are used
+to manage the application.
 
-* The tools we depend upon via `npm`, the [Node package manager][npm].
-* The Angular code via `bower`, a [client-side code package manager][bower].
+* The tools via `npm`, the [Node package manager][npm].
+* The AngularJS code via `bower`, a [client-side code package manager][bower].
 
-There is a preconfigured `npm` to automatically run `bower` so we can simply do:
+There is a preconfigured `npm` to automatically run `bower`:
 
 ```
 npm install
@@ -67,16 +63,15 @@ makes it easier to serve the files by a web server.*
 
 ### Run the Application
 
-We have preconfigured the project with a simple development web server. The simplest way to start
-this server is:
+The app is preconfigured with a simple development web server:
 
 ```
 npm start or gulp run
 ```
 
-Now browse to the app at [`localhost:8000/index.html`].
+Now browse to the app at [`localhost:8000`].
 
 
 ## Contact
 
-For more information on the development of this application please visit [http://chronicles.co.za].
+For more updates on the development of this application please follow [http://twitter.com/sir_starr].
