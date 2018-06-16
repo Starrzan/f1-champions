@@ -47,14 +47,13 @@ angular.module('f1Champions', [
 	// Variables
 	$rootScope.state; //Used for back button state check
 
-	// Check if global varialbe is set in storage, if not then set
 	// Global variable is populated with race data on user request and remains stored in storage for quicker access and less http requests
 	if ($window.localStorage.getItem('f1Champions')) {
 		$rootScope.f1Champions = JSON.parse($window.localStorage.getItem('f1Champions'));
 	} else {
 		$rootScope.f1Champions = {};
 		$rootScope.f1Champions.appTitle = `F1 World Champions`;
-		$rootScope.f1Champions.appVersion = `Version: 0.1.5`;
+		$rootScope.f1Champions.appVersion = `Version: 0.2.0`;
 		$rootScope.f1Champions.author = `Coded by <a href="http://chronicles.co.za" target="_blank">Starrzan</a>`;
 
 		// Ergast API constants
