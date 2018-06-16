@@ -4,6 +4,7 @@
 
 		<div flex layout-margin>
 
+			<!-- Page description -->
 			<h2>{{ f1Champions.seasonStart }} - {{ f1Champions.seasonEnd }}</h2>
 
 			<p>An interactive listing of all of the Formula1 races winners from {{ f1Champions.seasonStart }} to {{ f1Champions.seasonEnd }}.</p>
@@ -20,8 +21,10 @@
 
 		<div layout="column" flex layout-margin>
 
+			<!-- Progress bar -->
 			<md-progress-linear md-mode="indeterminate" class="loader top" ng-show="loading"></md-progress-linear>
 
+			<!-- Season listing table -->
 			<table>
 				<thead>
 					<tr>
@@ -30,6 +33,7 @@
 					</tr>
 				</thead>
 				<tbody>
+					<!-- Click through to season rounds listing -->
 					<tr ng-click="viewSeason(season.season)" ng-repeat="season in f1Champions.seasons">
 						<td>{{ season.season }}</td>
 						<td>
@@ -39,6 +43,7 @@
 				</tbody>
 			</table>
 
+			<!-- Progress bar -->
 			<md-progress-linear md-mode="indeterminate" class="loader bottom" ng-show="loading"></md-progress-linear>
 
 		</div>

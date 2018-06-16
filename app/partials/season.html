@@ -1,9 +1,10 @@
 <md-card md-theme="{{ 'default' }}">
 
-	<div layout="row" layout-xs="column">
+	<div layout="row">
 
 		<div flex layout-margin>
 
+			<!-- Page description -->
 			<h2>{{ season }}<span class="align-right">Season</span></h2>
 
 			<p class="md-caption"><i class="material-icons hightlight">flag</i> Indicates the season champion</p>
@@ -20,8 +21,10 @@
 
 		<div layout="column" flex layout-margin>
 
+			<!-- Progress bar -->
 			<md-progress-linear md-mode="indeterminate" class="loader top" ng-show="loading"></md-progress-linear>
 
+			<!-- Round listing table -->
 			<table>
 				<thead>
 					<tr>
@@ -30,11 +33,13 @@
 					</tr>
 				</thead>
 				<tbody>
+					<!-- Highlight row if round winner equals season champion -->
 					<tr ng-repeat="round in f1Champions.seasons[season].rounds" ng-class="{ 'highlight': round.winner.name == f1Champions.seasons[season].champion.name }">
 						<td>
 							<span class="img country" style="background-image: url({{ round.country }})">{{ round.round }}. </span>
 							<span class="img circuit" style="background-image: url({{ round.circuit }})">{{ round.name }}</span></td>
 						<td>
+							<!-- Show flag icon if round winner equals season champion -->
 							<i ng-if="round.winner.name == f1Champions.seasons[season].champion.name" class="material-icons align-right">flag</i>
 							<span class="img winner" style="background-image: url({{ round.winner.image }})">{{ round.winner.name }}</span>
 						</td>
@@ -42,6 +47,7 @@
 				</tbody>
 			</table>
 
+			<!-- Progress bar -->
 			<md-progress-linear md-mode="indeterminate" class="loader bottom" ng-show="loading"></md-progress-linear>
 
 		</div>

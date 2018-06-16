@@ -24,6 +24,7 @@
 		<md-toolbar>
 			<div class="md-toolbar-tools">
 
+				<!-- Show main logo if on root page and back button on any other -->
 				<div flex class="text-left">
 					<md-button href="/" aria-label="Go back" ng-show="state !== 'seasons'">
 						<i class="material-icons">arrow_back</i> <span class="text">Back</span>
@@ -33,6 +34,7 @@
 
 				<h1 flex>{{ f1Champions.appTitle }}</h1>
 
+				<!-- About popup -->
 				<div flex class="text-right">
 					<md-button class="md-fab md-mini" aria-label="About the app" ng-click="showAbout()">
 						<i class="material-icons">help</i>
@@ -48,6 +50,7 @@
 
 					<div layout-align="center" flex layout-margin>
 
+						<!-- App view -->
 						<ui-view></ui-view>
 
 					</div>
@@ -57,6 +60,7 @@
 			</md-card>
 		</md-content>
 
+		<!-- Back to top -->
 		<md-button class="md-fab md-mini md-fab-bottom-right" aria-label="Back to top" ng-click="backToTop()">
 			<i class="material-icons">keyboard_arrow_up</i>
 		</md-button>

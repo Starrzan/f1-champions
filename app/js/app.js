@@ -54,9 +54,10 @@ angular.module('f1Champions', [
 
 	} else {
 
+		// Global listing object
 		$rootScope.f1Champions = {};
 		$rootScope.f1Champions.appTitle = `F1 World Champions`;
-		$rootScope.f1Champions.appVersion = `Version: 0.2.1`;
+		$rootScope.f1Champions.appVersion = `Version: 0.2.2`;
 		$rootScope.f1Champions.author = `Coded by <a href="http://chronicles.co.za" target="_blank">Starrzan</a>`;
 
 		// Ergast API constants
@@ -65,7 +66,7 @@ angular.module('f1Champions', [
 		$rootScope.f1Champions.seasonStart = 2005;
 		$rootScope.f1Champions.seasonEnd = 2015;
 
-		// Initialise seasons array
+		// Initialise seasons object
 		$rootScope.f1Champions.seasons = {};
 
 		// Store global listing object in localStorage (future feature)

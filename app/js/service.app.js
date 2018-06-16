@@ -41,7 +41,7 @@ angular.module('f1Champions')
 		checkStoredObject: function (obj, property) {
 
 			for (let key in Object.keys(obj)) {
-				return key = property;
+				return key == property;
 			}
 
 		},
@@ -67,17 +67,18 @@ angular.module('f1Champions')
 		getWikiArticleImageSrc: function (obj) {
 
 			for (let page in obj.data.query.pages) {
-				return obj.data.query.pages[page].thumbnail.source;
+				return page > -1 ? obj.data.query.pages[page].thumbnail.source : '';
 			}
 
 		},
 
-		getCountryCode: function (countryName) {
+		// Get Rest Countries API call based on country name
+		getRestCountriesURL: function (countryName) {
 
 			// Get round country
 			let country = countryName;
 
-			// Fix for Korea on restcountries.eu
+			// Country name format fixes as used by restcountries.eu
 			if (country == 'Korea') {
 				country = 'Korea (Republic of)';
 			} else if (country == 'Russia') {
