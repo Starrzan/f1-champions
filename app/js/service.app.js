@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('f1Champions')
-	.factory('AppService', function($http, $q) {
+	.factory('AppService', function($http, $q, $window) {
 
 	// Get data from API
 	return {
@@ -12,6 +12,7 @@ angular.module('f1Champions')
 			var req = {
 				method: 'GET',
 				url: apiQuery,
+				cache: true,
 				headers: {
 					'Content-Type': 'application/json'
 				},
@@ -19,6 +20,36 @@ angular.module('f1Champions')
 			};
 
 			return $http(req);
+
+		},
+
+		// Store object in localStorage (future feature)
+		storeObject: function (name, obj) {
+
+			$window.localStorage.setItem(name, JSON.stringify(obj));
+
+		},
+
+		// Get object in localStorage (future feature)
+		getStoredObject: function (name) {
+
+			return JSON.parse($window.localStorage.getItem(name));
+
+		},
+
+		// Check if object property and value is set (future feature)
+		checkStoredObject: function (obj, property) {
+
+			for (let key in Object.keys(obj)) {
+				return key = property;
+			}
+
+		},
+
+		// Remove object in localStorage (future feature)
+		removeStoredObject: function (name) {
+
+			$window.localStorage.removeItem(name);
 
 		},
 

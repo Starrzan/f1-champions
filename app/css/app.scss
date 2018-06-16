@@ -277,6 +277,7 @@ table {
 
 					i {
 						color: $accent-color;
+						line-height: 50px;
 
 						@include breakpoint(mobileonly) {
 							font-size: 12px;

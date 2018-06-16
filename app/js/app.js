@@ -42,18 +42,21 @@ angular.module('f1Champions', [
 })
 
 	// Main controller to instansiate global listing object and main UI functions
-	.controller('appController', function ($scope, $rootScope, $state, $window, $timeout, $mdDialog, $sanitize) {
+	.controller('appController', function ($scope, $rootScope, $window, $timeout, $mdDialog, $sanitize, AppService) {
 
 	// Variables
 	$rootScope.state; //Used for back button state check
 
 	// Global variable is populated with race data on user request and remains stored in storage for quicker access and less http requests
-	if ($window.localStorage.getItem('f1Champions')) {
-		$rootScope.f1Champions = JSON.parse($window.localStorage.getItem('f1Champions'));
+	if (AppService.getStoredObject('f1Champions')) {
+
+		$rootScope.f1Champions = AppService.getStoredObject('f1Champions');
+
 	} else {
+
 		$rootScope.f1Champions = {};
 		$rootScope.f1Champions.appTitle = `F1 World Champions`;
-		$rootScope.f1Champions.appVersion = `Version: 0.2.0`;
+		$rootScope.f1Champions.appVersion = `Version: 0.2.1`;
 		$rootScope.f1Champions.author = `Coded by <a href="http://chronicles.co.za" target="_blank">Starrzan</a>`;
 
 		// Ergast API constants
@@ -65,12 +68,14 @@ angular.module('f1Champions', [
 		// Initialise seasons array
 		$rootScope.f1Champions.seasons = {};
 
-		// Store global listing object in localStorage
-		$window.localStorage.setItem('f1Champions', JSON.stringify($rootScope.f1Champions));
+		// Store global listing object in localStorage (future feature)
+		//AppService.storeObject('f1Champions', $rootScope.f1Champions);
+
 	}
 
 	// About popup
 	$scope.showAbout = function() {
+
 		$mdDialog.show({
 			controller: dialogController,
 			templateUrl: 'partials/about.html',
@@ -89,29 +94,39 @@ angular.module('f1Champions', [
 				right: 50
 			}
 		});
+
 	};
 
 	// Back to top
 	$scope.backToTop = function() {
+
 		if ($window.pageYOffset > 0) {
 			$window.scrollBy(0, -10);
 			$timeout($scope.backToTop, 0);
 		}
+
 	}
 
 	// About dialog controller
-	function dialogController($scope, $rootScope, $window, $location, $mdDialog) {
+	function dialogController($scope, $rootScope, $window, $location, $mdDialog, AppService) {
 
 		// Remove the global listing storage item and reload state
 		$scope.resetData = function() {
-			$window.localStorage.removeItem('f1Champions');
+
+			AppService.removeStoredObject('f1Champions');
+
 			$mdDialog.cancel();
+
 			$location.path('/');
+
 			$window.location.reload();
+
 		}
 
 		$scope.close = function() {
+
 			$mdDialog.cancel();
+
 		};
 
 	}

@@ -136,7 +136,8 @@ table {
       background-color: #9E9E9E;
       cursor: pointer; }
     table tbody tr.highlight td i {
-      color: #f44336; }
+      color: #f44336;
+      line-height: 50px; }
       @media (max-width: 37.5em) {
         table tbody tr.highlight td i {
           font-size: 12px;
