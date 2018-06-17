@@ -2,23 +2,19 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var webserver = require('gulp-webserver');
 
-//BUILD
+// Build
 gulp.task('build', [], function() {
 	return gulp.src('app/css/app.scss')
 		.pipe(sass({outputstyle: 'compressed'}).on('error', sass.logError))
 		.pipe(gulp.dest('app/css/'));
 });
 
-// WATCH
-gulp.task('watch', ['default'], function() {
+// Watch
+gulp.task('watch', function() {
 	gulp.watch('app/css/*.scss', ['build']);
-	gulp.watch('app/js/*.js', ['scripts']);
-	gulp.watch('app/img/*.{jpg,gif,png,svg}', ['images']);
 });
 
-gulp.task('default', ['run']);
-
-// SERVER
+// Server
 gulp.task('webserver', function() {
 	gulp.src('app')
 		.pipe(webserver({
@@ -28,4 +24,6 @@ gulp.task('webserver', function() {
 	}));
 });
 
-gulp.task('run', ['build', 'webserver']);
+gulp.task('run', ['build', 'webserver', 'watch']);
+
+gulp.task('default', ['run']);
