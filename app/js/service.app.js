@@ -58,12 +58,12 @@ angular.module('f1Champions')
 
 		},
 
-		// Get object in localStorage (future feature)
+		/*// Get object in localStorage (future feature)
 		getStoredObject: function (name) {
 
 			return JSON.parse($window.localStorage.getItem(name));
 
-		},
+		},*/
 
 		/*// Store object in localStorage (future feature)
 		storeObject: function (name, obj) {

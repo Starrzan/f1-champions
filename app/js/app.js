@@ -43,10 +43,7 @@ angular.module('f1Champions', [
 	// Main controller to instansiate global app object and main UI functions
 	.controller('appController', function ($scope, $rootScope, $window, $timeout, $mdDialog, $sanitize, AppService) {
 
-	// Variables
-	$rootScope.state; //Used for back button state check
-
-	// Global app object object is populated with race data on user request and remains stored in storage for quicker access and less http requests
+	// Global app object is populated with race data on user request and is stored in rootscope for global access
 	$rootScope.f1Champions = {};
 	$rootScope.f1Champions.appTitle = `F1 World Champions`;
 	$rootScope.f1Champions.appVersion = `Version: 0.2.4`;

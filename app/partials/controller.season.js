@@ -7,7 +7,7 @@ angular.module('f1Champions')
 	let season = $stateParams.season;
 	$scope.season = season; // Used in ng-repeat
 	$scope.$state = $state;
-	$rootScope.state = $state.current.name;
+	$rootScope.state = $state.current.name; // Used for back button state check which is outside of the view
 
 	SeasonsService.saveSeason(season).then(function (response) {
 

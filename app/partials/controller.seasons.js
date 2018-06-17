@@ -5,7 +5,7 @@ angular.module('f1Champions')
 
 	// Variables
 	$scope.$state = $state;
-	$rootScope.state = $state.current.name;
+	$rootScope.state = $state.current.name; // Used for back button state check which is outside of the view
 
 	// Iterate through seasons from start and end constraints and store season winners
 	for (let season = $rootScope.f1Champions.seasonStart; season <= $rootScope.f1Champions.seasonEnd; season++) {
