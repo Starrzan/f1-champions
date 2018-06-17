@@ -27,8 +27,8 @@ angular.module('f1Champions')
 			// Set temp season rounds
 			let rounds = response.data.MRData.RaceTable.Races;
 
-			// Iterate through rounds promise and store round winners
-			rounds.reduce(function(previousRound, currentRound) {
+			// Reduce rounds array and store round winners through promises
+			rounds.reduce(function (previousRound, currentRound) {
 
 				// Show loading element
 				$scope.loading = true;
@@ -105,8 +105,10 @@ angular.module('f1Champions')
 
 				});
 
+				// Return promise and call next in array until all are resolved
 				return previousRound.then(currentRound);
 
+				// Start reduce with resolved promise
 			}, Promise.resolve());
 
 
