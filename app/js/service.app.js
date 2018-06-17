@@ -65,28 +65,28 @@ angular.module('f1Champions')
 
 		},
 
-		// Store object in localStorage (future feature)
+		/*// Store object in localStorage (future feature)
 		storeObject: function (name, obj) {
 
-			//$window.localStorage.setItem(name, JSON.stringify(obj));
+			$window.localStorage.setItem(name, JSON.stringify(obj));
 
-		},
+		},*/
 
-		// Check if object property and value is set (future feature)
+		/*// Check if object property and value is set (future feature)
 		checkStoredObject: function (obj, property) {
 
-			/*for (let key in Object.keys(obj)) {
+			for (let key in Object.keys(obj)) {
 				return key == property;
-			}*/
+			}
 
-		},
+		},*/
 
-		// Remove object in localStorage (future feature)
+		/*// Remove object in localStorage (future feature)
 		removeStoredObject: function (name) {
 
-			/*$window.localStorage.removeItem(name);*/
+			$window.localStorage.removeItem(name);
 
-		},
+		},*/
 
 	}
 

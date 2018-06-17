@@ -15,7 +15,7 @@ angular.module('f1Champions')
 
 				if (typeof $rootScope.f1Champions.seasons[season] === 'undefined') {
 
-					// Set season name in global listing object
+					// Set season name in global app object
 					$rootScope.f1Champions.seasons[season] = {
 						'season': season
 					};
@@ -25,7 +25,7 @@ angular.module('f1Champions')
 				// Get season winner
 				let champion = response.data.MRData.StandingsTable.StandingsLists[0].DriverStandings[0].Driver;
 
-				// Set season champion name in global listing object
+				// Set season champion name in global app object
 				$rootScope.f1Champions.seasons[season].champion = {
 					'name': `${champion.givenName} ${champion.familyName}`
 				}
@@ -39,7 +39,7 @@ angular.module('f1Champions')
 
 				return AppService.getData(apiQueryWikiDriver).then(function (response) {
 
-					// Set season champion image in global listing object
+					// Set season champion image in global app object
 					$rootScope.f1Champions.seasons[season].champion.image = AppService.getWikiArticleImageSrc(response);
 
 				}).catch(function (error) {

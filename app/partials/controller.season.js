@@ -17,7 +17,7 @@ angular.module('f1Champions')
 		// Get season rounds
 		AppService.getData(apiQueryRounds).then(function (response) {
 
-			// Initialise rounds object in global listing object if not found
+			// Initialise rounds object in global app object if not found
 			if (typeof $rootScope.f1Champions.seasons[season].rounds  === 'undefined') {
 
 				$rootScope.f1Champions.seasons[season].rounds = {};
@@ -38,7 +38,7 @@ angular.module('f1Champions')
 
 				AppService.getData(apiQueryRound).then(function (response) {
 
-					// Set round data in global listing object
+					// Set round data in global app object
 					$rootScope.f1Champions.seasons[currentRound.season].rounds[currentRound.round] = {
 						'round': currentRound.round,
 						'name': currentRound.raceName,
@@ -48,7 +48,7 @@ angular.module('f1Champions')
 					// Get round winner
 					let winner = response.data.MRData.RaceTable.Races[0].Results[0].Driver;
 
-					// Set round winner data in global listing object
+					// Set round winner data in global app object
 					$rootScope.f1Champions.seasons[currentRound.season].rounds[currentRound.round].winner = {
 						'name': `${winner.givenName} ${winner.familyName}`
 					};
@@ -62,11 +62,8 @@ angular.module('f1Champions')
 
 					AppService.getData(apiQueryWikiDriver).then(function (response) {
 
-						// Set winner image in global listing object
+						// Set winner image in global app object
 						$rootScope.f1Champions.seasons[currentRound.season].rounds[currentRound.round].winner.image = AppService.getWikiArticleImageSrc(response);
-
-						// Update global listing object in localStorage (future feature)
-						AppService.storeObject('f1Champions', $rootScope.f1Champions);
 
 					});
 
@@ -77,11 +74,8 @@ angular.module('f1Champions')
 
 					AppService.getData(apiQueryRestCountries).then(function (response) {
 
-						// Set round country in global listing object
+						// Set round country in global app object
 						$rootScope.f1Champions.seasons[currentRound.season].rounds[currentRound.round].country = `http://www.countryflags.io/${response.data[0].alpha2Code}/flat/64.png`;
-
-						// Update global listing object in localStorage (future feature)
-						AppService.storeObject('f1Champions', $rootScope.f1Champions);
 
 					});
 
@@ -92,11 +86,8 @@ angular.module('f1Champions')
 
 					AppService.getData(apiQueryWikiRound).then(function (response) {
 
-						// Set round circuit in global listing object
+						// Set round circuit in global app object
 						$rootScope.f1Champions.seasons[currentRound.season].rounds[currentRound.round].circuit = AppService.getWikiArticleImageSrc(response);
-
-						// Update global listing object in localStorage (future feature)
-						AppService.storeObject('f1Champions', $rootScope.f1Champions);
 
 						// Hide loading element on last item
 						if (currentRound.round == rounds.length) {
