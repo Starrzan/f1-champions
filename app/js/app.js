@@ -20,12 +20,12 @@ angular.module('f1Champions', [
 		.state('seasons', {
 		url: '/',
 		templateUrl: 'partials/seasons.html',
-		controller: 'seasonsController'
+		controller: 'SeasonsController'
 	})
 		.state('season', {
 		url: '/season/:season',
 		templateUrl: 'partials/season.html',
-		controller: 'seasonController'
+		controller: 'SeasonController'
 	})
 	;
 
@@ -57,12 +57,11 @@ angular.module('f1Champions', [
 		// Global listing object
 		$rootScope.f1Champions = {};
 		$rootScope.f1Champions.appTitle = `F1 World Champions`;
-		$rootScope.f1Champions.appVersion = `Version: 0.2.3`;
+		$rootScope.f1Champions.appVersion = `Version: 0.2.4`;
 		$rootScope.f1Champions.author = `Coded by <a href="http://chronicles.co.za" target="_blank">Starrzan</a>`;
 
 		// Ergast API constants
-		$rootScope.f1Champions.ergastApi = '//ergast.com/api';
-		$rootScope.f1Champions.series = 'f1';
+		$rootScope.f1Champions.ergastApi = '//ergast.com/api/f1';
 		$rootScope.f1Champions.seasonStart = 2005;
 		$rootScope.f1Champions.seasonEnd = 2015;
 

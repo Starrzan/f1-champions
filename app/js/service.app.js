@@ -1,9 +1,8 @@
 'use strict';
 
 angular.module('f1Champions')
-	.factory('AppService', function($http, $q, $window) {
+	.factory('AppService', function($http, $window) {
 
-	// Get data from API
 	return {
 
 		// Generic API Get with json repsonse
@@ -20,36 +19,6 @@ angular.module('f1Champions')
 			};
 
 			return $http(req);
-
-		},
-
-		// Store object in localStorage (future feature)
-		storeObject: function (name, obj) {
-
-			$window.localStorage.setItem(name, JSON.stringify(obj));
-
-		},
-
-		// Get object in localStorage (future feature)
-		getStoredObject: function (name) {
-
-			return JSON.parse($window.localStorage.getItem(name));
-
-		},
-
-		// Check if object property and value is set (future feature)
-		checkStoredObject: function (obj, property) {
-
-			for (let key in Object.keys(obj)) {
-				return key == property;
-			}
-
-		},
-
-		// Remove object in localStorage (future feature)
-		removeStoredObject: function (name) {
-
-			$window.localStorage.removeItem(name);
 
 		},
 
@@ -87,7 +56,37 @@ angular.module('f1Champions')
 
 			return `https://restcountries.eu/rest/v2/name/${country}?fullText=true`;
 
-		}
+		},
+
+		// Get object in localStorage (future feature)
+		getStoredObject: function (name) {
+
+			return JSON.parse($window.localStorage.getItem(name));
+
+		},
+
+		// Store object in localStorage (future feature)
+		storeObject: function (name, obj) {
+
+			//$window.localStorage.setItem(name, JSON.stringify(obj));
+
+		},
+
+		// Check if object property and value is set (future feature)
+		checkStoredObject: function (obj, property) {
+
+			/*for (let key in Object.keys(obj)) {
+				return key == property;
+			}*/
+
+		},
+
+		// Remove object in localStorage (future feature)
+		removeStoredObject: function (name) {
+
+			/*$window.localStorage.removeItem(name);*/
+
+		},
 
 	}
 
