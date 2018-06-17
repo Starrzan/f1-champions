@@ -20,7 +20,7 @@ To view the source files, or to create a fork, clone the `f1-champions` reposito
 
 ### Prerequisites
 
-You need git to clone the `f1-championsd` repository. You can get git from [https://github.com/Starrzan/f1-champions.git].
+You need git to clone the `f1-champions` repository. You can get git from [https://github.com/Starrzan/f1-champions.git].
 
 THere are a number of Node.js tools that is used to build the application. You must have Node.js
 and its package manager (npm) installed. You can get them from [https://nodejs.org].
