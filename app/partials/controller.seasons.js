@@ -25,7 +25,7 @@ angular.module('f1Champions')
 		}).catch(function (error) {
 
 			console.log(error);
-			loader ? this.loading = false : '';
+			$scope.loading = false;
 
 		});
 
