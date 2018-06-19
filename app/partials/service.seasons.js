@@ -10,12 +10,17 @@ angular.module('f1Champions')
 
 			// Set Ergast API Query to get all season winners
 			let apiQuerySeasons = `${$rootScope.f1Champions.ergastApi}/${season}/driverStandings.json`;
+			let status = '';
 
 			return AppService.getData(apiQuerySeasons).then(function (response) {
 
+				//if (typeof AppService.loadData(`seasons.${season}`) === 'undefined') {
 				if (typeof $rootScope.f1Champions.seasons[season] === 'undefined') {
 
 					// Set season name in global app object
+					/*AppService.saveData(['seasons'][season], {
+						'season': season
+					});*/
 					$rootScope.f1Champions.seasons[season] = {
 						'season': season
 					};
@@ -30,7 +35,7 @@ angular.module('f1Champions')
 					'name': `${champion.givenName} ${champion.familyName}`
 				}
 
-				return champion
+				return champion;
 
 			}).then(function (response) {
 
@@ -46,11 +51,15 @@ angular.module('f1Champions')
 
 					console.log(error);
 
+					return status = 'error';
+
 				});
 
 			}).catch(function (error) {
 
 				console.log(error);
+
+				return status = 'error';
 
 			});
 

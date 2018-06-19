@@ -7,6 +7,7 @@ $accent-color:         rgb(244,67,54);
 $primary-text-color:   #212121;
 $secondary-text-color: #757575;
 $divider-color:        #BDBDBD;
+$green-color:       	 green;
 
 /* Breakpoints */
 
@@ -65,6 +66,14 @@ p {
 
 		&.hightlight {
 			color: $accent-color;
+		}
+
+		&.error {
+			color: $accent-color;
+		}
+
+		&.success {
+			color: $green-color;
 		}
 
 	}

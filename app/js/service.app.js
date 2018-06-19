@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('f1Champions')
-	.factory('AppService', function($http, $window) {
+	.factory('AppService', function($http, $window, $rootScope) {
 
 	return {
 
@@ -20,6 +20,28 @@ angular.module('f1Champions')
 
 			return $http(req);
 
+		},
+
+		saveData: function (property, value) {
+			console.log(property);
+			console.log(value);
+			let properties = property.slice().split('.');
+			properties.reduce(function (prev, cur) {
+
+			});
+
+			$rootScope.f1Champions = value;
+		},
+
+		loadData: function (property) {
+			console.log(property);
+			return $rootScope.f1Champions[property];
+
+			/*let properties = property.slice().split('.');
+			properties.map(function (prop) {
+				$rootScope.f1Champions[property] = value;
+			});
+			$rootScope.f1Champions;*/
 		},
 
 		// Extract main image from Wikipedia article field

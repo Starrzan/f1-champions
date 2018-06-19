@@ -56,6 +56,23 @@ angular.module('f1Champions', [
 
 	// Initialise seasons object
 	$rootScope.f1Champions.seasons = {};
+	/*$rootScope.f1Champions.seasons = {
+		season: '',
+		champion: {
+			name: '',
+			image: ''
+		},
+		rounds: {
+			round: '',
+			name: '',
+			winner: {
+				name: '',
+				image: ''
+			},
+			country: '',
+			circuit:  ''
+		}
+	};*/
 
 	// About popup
 	$scope.showAbout = function() {

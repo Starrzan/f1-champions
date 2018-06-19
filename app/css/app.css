@@ -25,6 +25,10 @@ p i {
   vertical-align: middle; }
   p i.hightlight {
     color: #f44336; }
+  p i.error {
+    color: #f44336; }
+  p i.success {
+    color: green; }
 
 :focus {
   outline: 0; }

@@ -8,6 +8,7 @@ angular.module('f1Champions')
 	$scope.season = season; // Used in ng-repeat
 	$scope.$state = $state;
 	$rootScope.state = $state.current.name; // Used for back button state check which is outside of the view
+	$scope.status = ''; // Used for data loading status message
 
 	SeasonsService.saveSeason(season).then(function (response) {
 
@@ -42,7 +43,7 @@ angular.module('f1Champions')
 					$rootScope.f1Champions.seasons[currentRound.season].rounds[currentRound.round] = {
 						'round': currentRound.round,
 						'name': currentRound.raceName,
-						'season': currentRound.season
+						/*'season': currentRound.season*/
 					}
 
 					// Get round winner
@@ -94,6 +95,8 @@ angular.module('f1Champions')
 
 							$scope.loading = false;
 
+							$scope.status = $scope.status == 'error' ? 'error' : 'success';
+
 						}
 
 					});
@@ -101,6 +104,9 @@ angular.module('f1Champions')
 				}).catch(function (error) {
 
 					console.log(error);
+
+					$scope.status = 'error';
+
 					$scope.loading = false;
 
 				});
@@ -115,10 +121,13 @@ angular.module('f1Champions')
 		}).catch(function (error) {
 
 			console.log(error);
+
+			$scope.status = 'error';
+
 			$scope.loading = false;
 
 		});
 
-	})
+	});
 
 });
