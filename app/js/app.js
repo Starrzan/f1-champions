@@ -46,7 +46,7 @@ angular.module('f1Champions', [
 	// Global app object is populated with race data on user request and is stored in rootscope for global access
 	$rootScope.f1Champions = {};
 	$rootScope.f1Champions.appTitle = `F1 World Champions`;
-	$rootScope.f1Champions.appVersion = `Version: 0.2.4`;
+	$rootScope.f1Champions.appVersion = `Version: 0.2.5`;
 	$rootScope.f1Champions.author = `Coded by <a href="http://chronicles.co.za" target="_blank">Starrzan</a>`;
 
 	// Ergast API constants

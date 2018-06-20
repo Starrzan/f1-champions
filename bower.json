@@ -1,22 +1,22 @@
 {
-  "name": "f1-champions",
-  "description": "An interactive listing of Formula1 World Champions",
-  "version": "0.2.4",
-  "homepage": "https://github.com/starrzan/f1-champions",
-  "license": "MIT",
-  "private": true,
-  "dependencies": {
-    "angular": "^1.7.0",
-    "angular-loader": "^1.7.0",
-    "angular-mocks": "^1.7.0",
-    "angular-ui-router": "^1.0.18",
-    "angular-aria": "^1.1.9",
-    "angular-animate": "^1.1.9",
-    "angular-messages": "^1.1.9",
-    "angular-material": "^1.1.9",
-    "angular-sanitize": "^1.7.2"
-  },
-  "resolutions": {
-    "angular": ">= 1.2.0"
-  }
+	"name": "f1-champions",
+	"description": "An interactive listing of Formula1 World Champions",
+	"version": "0.2.5",
+	"homepage": "https://github.com/starrzan/f1-champions",
+	"license": "MIT",
+	"private": true,
+	"dependencies": {
+		"angular": "^1.7.0",
+		"angular-loader": "^1.7.0",
+		"angular-mocks": "^1.7.0",
+		"angular-ui-router": "^1.0.18",
+		"angular-aria": "^1.1.9",
+		"angular-animate": "^1.1.9",
+		"angular-messages": "^1.1.9",
+		"angular-material": "^1.1.9",
+		"angular-sanitize": "^1.7.2"
+	},
+	"resolutions": {
+		"angular": ">= 1.2.0"
+	}
 }
