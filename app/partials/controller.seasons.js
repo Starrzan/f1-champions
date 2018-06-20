@@ -5,8 +5,21 @@ angular.module('f1Champions')
 
 	// Variables
 	$scope.$state = $state;
+
 	$rootScope.state = $state.current.name; // Used for back button state check which is outside of the view
+
 	$scope.status = ''; // Used for data loading status message
+
+	// Listen for status update
+	$scope.$on('statusUpdate', function (event, args) {
+
+		$scope.status = args.status;
+
+		$scope.loading = false;
+
+		args.message ? console.log(args.message) : '';
+
+	});
 
 	// Iterate through seasons from start and end constraints and store season winners
 	for (let season = $rootScope.f1Champions.seasonStart; season <= $rootScope.f1Champions.seasonEnd; season++) {
@@ -16,26 +29,16 @@ angular.module('f1Champions')
 
 		$scope.status = SeasonsService.saveSeason(season).then(function (response) {
 
-			$scope.status = response;
-
 			// Hide loading element on last item if loader true
 			if (season == $rootScope.f1Champions.seasonEnd) {
 
-				$scope.loading = false;
-
-				$scope.status = $scope.status == 'error' ? 'error' : 'success';
-
-				console.log($scope.status);
+				$scope.$emit('statusUpdate', { status: response == 'error' ? 'error' : 'success' });
 
 			}
 
 		}).catch(function (error) {
 
-			console.log(error);
-
-			$scope.status = 'error';
-
-			$scope.loading = false;
+			$scope.$emit('statusUpdate', { status: 'error', message: error });
 
 		});
 

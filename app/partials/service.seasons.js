@@ -10,6 +10,7 @@ angular.module('f1Champions')
 
 			// Set Ergast API Query to get all season winners
 			let apiQuerySeasons = `${$rootScope.f1Champions.ergastApi}/${season}/driverStandings.json`;
+
 			let status = '';
 
 			return AppService.getData(apiQuerySeasons).then(function (response) {

@@ -23,9 +23,13 @@ angular.module('f1Champions')
 		},
 
 		saveData: function (property, value) {
+
 			console.log(property);
+
 			console.log(value);
+
 			let properties = property.slice().split('.');
+
 			properties.reduce(function (prev, cur) {
 
 			});
@@ -34,7 +38,9 @@ angular.module('f1Champions')
 		},
 
 		loadData: function (property) {
+
 			console.log(property);
+
 			return $rootScope.f1Champions[property];
 
 			/*let properties = property.slice().split('.');
@@ -58,7 +64,9 @@ angular.module('f1Champions')
 		getWikiArticleImageSrc: function (obj) {
 
 			for (let page in obj.data.query.pages) {
+
 				return page > -1 ? obj.data.query.pages[page].thumbnail.source : '';
+
 			}
 
 		},
@@ -71,9 +79,13 @@ angular.module('f1Champions')
 
 			// Country name format fixes as used by restcountries.eu
 			if (country == 'Korea') {
+
 				country = 'Korea (Republic of)';
+
 			} else if (country == 'Russia') {
+
 				country = 'Russian Federation';
+
 			}
 
 			return `https://restcountries.eu/rest/v2/name/${country}?fullText=true`;

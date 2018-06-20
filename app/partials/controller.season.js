@@ -5,10 +5,25 @@ angular.module('f1Champions')
 
 	// Variables
 	let season = $stateParams.season;
+
 	$scope.season = season; // Used in ng-repeat
+
 	$scope.$state = $state;
+
 	$rootScope.state = $state.current.name; // Used for back button state check which is outside of the view
+
 	$scope.status = ''; // Used for data loading status message
+
+	// Listen for status update
+	$scope.$on('statusUpdate', function (event, args) {
+
+		$scope.status = args.status;
+
+		$scope.loading = false;
+
+		args.message ? console.log(args.message) : '';
+
+	});
 
 	SeasonsService.saveSeason(season).then(function (response) {
 
@@ -42,8 +57,7 @@ angular.module('f1Champions')
 					// Set round data in global app object
 					$rootScope.f1Champions.seasons[currentRound.season].rounds[currentRound.round] = {
 						'round': currentRound.round,
-						'name': currentRound.raceName,
-						/*'season': currentRound.season*/
+						'name': currentRound.raceName
 					}
 
 					// Get round winner
@@ -93,9 +107,7 @@ angular.module('f1Champions')
 						// Hide loading element on last item
 						if (currentRound.round == rounds.length) {
 
-							$scope.loading = false;
-
-							$scope.status = $scope.status == 'error' ? 'error' : 'success';
+							$scope.$emit('statusUpdate', { status: response == 'error' ? 'error' : 'success' });
 
 						}
 
@@ -103,11 +115,7 @@ angular.module('f1Champions')
 
 				}).catch(function (error) {
 
-					console.log(error);
-
-					$scope.status = 'error';
-
-					$scope.loading = false;
+					$scope.$emit('statusUpdate', { status: 'error', message: error });
 
 				});
 
@@ -120,11 +128,7 @@ angular.module('f1Champions')
 
 		}).catch(function (error) {
 
-			console.log(error);
-
-			$scope.status = 'error';
-
-			$scope.loading = false;
+			$scope.$emit('statusUpdate', { status: 'error', message: error });
 
 		});
 
