@@ -52,7 +52,8 @@ angular.module('f1Champions', [
 	// Ergast API constants
 	$rootScope.f1Champions.ergastApi = '//ergast.com/api/f1';
 	$rootScope.f1Champions.seasonStart = 2005;
-	$rootScope.f1Champions.seasonEnd = 2015;
+	var currentDate =  new Date();
+	$rootScope.f1Champions.seasonEnd = currentDate.getFullYear() - 1;
 
 	// Initialise seasons object
 	$rootScope.f1Champions.seasons = {};
